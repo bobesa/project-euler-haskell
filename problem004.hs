@@ -15,4 +15,4 @@ topPalindrome n1 n2 best = if (n1 == topLimit && n2 == topLimit) then best else 
 -- main = print (topPalindrome bottomLimit bottomLimit 0)
 
 -- Way #2: Array comprehension
-main = print (maximum [x * y | x <- [bottomLimit..topLimit], y <- [bottomLimit..topLimit], isPalindromic (x * y)])
+main = print $ maximum [x * y | x <- [bottomLimit..topLimit], y <- [bottomLimit..topLimit], isPalindromic (x * y)]

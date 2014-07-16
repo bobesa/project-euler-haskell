@@ -11,7 +11,7 @@ mainOld = print (evenfib 1 1 0)
 
 -- Way #2: Array comprehension trick
 -- We will test only first 100 fibonacci numbers
-main = print (sum (filter above (take 100 fibs)))
+main = print $ sum $ filter above $ take 100 fibs
 	where
 		above num = num < limit && even num 
 		fibs = 1:2:[a + b | (a,b) <- zip fibs (tail fibs)]

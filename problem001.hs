@@ -12,4 +12,4 @@ multiSum2 current total = multiSum2 (current - 1) (if current `mod` 3 == 0 || cu
 -- main = print (multiSum2 999 0)
 
 -- Way #3: List comprehension (no arguments)
-main = print (sum [x | x <- [1..999],x `mod` 3 == 0 || x `mod` 5 == 0])
+main = print $ sum [x | x <- [1..999],x `mod` 3 == 0 || x `mod` 5 == 0]
