@@ -6,7 +6,10 @@
 multiSum1 max current total = if (current == max) then total else (multiSum1 max (current + 1) (if current `mod` 3 == 0 || current `mod` 5 == 0 then total + current else total)) 
 -- main = print (multiSum1 1000 0 0)
 
--- Way #2: Going from X to 0 (only 2 arguments = faster?)
+-- Way #2: Going from X to 0 (only 2 arguments)
 multiSum2 0 total = total
 multiSum2 current total = multiSum2 (current - 1) (if current `mod` 3 == 0 || current `mod` 5 == 0 then total + current else total) 
-main = print (multiSum2 999 0)
+-- main = print (multiSum2 999 0)
+
+-- Way #3: List comprehension (no arguments)
+main = print (sum [x | x <- [1..999],x `mod` 3 == 0 || x `mod` 5 == 0])
