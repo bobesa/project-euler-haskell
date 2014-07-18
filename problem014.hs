@@ -13,20 +13,18 @@
 -- 
 -- NOTE: Once the chain starts the terms are allowed to go above one million.
 
-collatz (n:xs)
-	| n <= 1 = length $ n:xs
-	| even n = collatz $ (n `div` 2):n:xs
-	| otherwise = collatz $ ((3*n)+1):n:xs
+collatz n len
+	| n <= 1 = len+1
+	| even n = collatz (n `div` 2) (len+1)
+	| otherwise = collatz ((3*n)+1) (len+1)
+
+getBigger x y = if snd x > snd y then x else y
 
 getTopCollatz limit = f 1 (0,0)
 	where
 		f n best
 			| n > limit = best
-			| (collatz [n]) > (snd best) = f (n+1) (n,(collatz [n]))
-			| otherwise = f (n+1) best
+			| otherwise = f (n+1) (getBigger best (n,(collatz n 0)))
 	
 
 main = print $ getTopCollatz 1000000
-
--- THIS IS SUPER SLOW!!!
--- TODO: collatz will not be using array - just length of chain 
