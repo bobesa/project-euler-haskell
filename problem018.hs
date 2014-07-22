@@ -13,4 +13,4 @@ computeRows (x1:x2:xs) (y:ys) = (y + (max x1 x2)):(computeRows (x2:xs) (ys))
 computeTriangle (r1:[]) = [r1]
 computeTriangle (r1:r2:xs) = r1:(computeTriangle ((computeRows r1 r2):xs))
 
-main = print $ head $ last $ computeTriangle triangle2
+main = (print . head . last . computeTriangle) triangle2
